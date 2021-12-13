@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="..\:/Users/david/Desktop/herramientas/SEMESTRAL-DavidAna/app/src/main/res/layout/activity_main.xml" value="0.12771739130434784" />
+=======
+        <entry key="..\:/Users/Mi PC/Desktop/SEMESTRAL DavidAna/app/src/main/res/layout/activity_main.xml" value="0.1" />
+>>>>>>> 87c53d3b7a17a2740f09408035600f386ffdaaf6
       </map>
     </option>
   </component>
