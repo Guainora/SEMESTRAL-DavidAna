@@ -1,14 +1,17 @@
 package org.example.proyectosemestraldavidpanag;
 
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,11 +23,13 @@ public class MainActivity extends AppCompatActivity implements  SensorEventListe
     SensorManager sensorManager;
     long lastUpdate = 0;
     float last_x, last_y, last_z;
-    static final int SHAKE_THRESHOLD = 800;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //buscando los txt view
+
         txtx=findViewById(R.id.ejeX);
         txty=findViewById(R.id.ejeY);
         txtz=findViewById(R.id.ejeZ);
@@ -34,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements  SensorEventListe
 
         sensorManager= (SensorManager) getSystemService(SENSOR_SERVICE);
         proximidad=sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
-        lacelerometro=sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
+        lacelerometro=sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager.registerListener(this, proximidad, SensorManager.SENSOR_DELAY_NORMAL);
         sensorManager.registerListener(this, lacelerometro, SensorManager.SENSOR_DELAY_NORMAL);
 
@@ -60,8 +65,8 @@ public class MainActivity extends AppCompatActivity implements  SensorEventListe
                     img.setImageResource(R.drawable.acelerometro2);
                 }
                 break;
-
-            case Sensor.TYPE_LINEAR_ACCELERATION:
+// final del case 1
+            case Sensor.TYPE_ACCELEROMETER:
                 float x = sensorEvent.values[0];
                 float y = sensorEvent.values[1];
                 float z = sensorEvent.values[2];
@@ -73,20 +78,28 @@ public class MainActivity extends AppCompatActivity implements  SensorEventListe
                     lastUpdate = curTime;
 
                     float speed = Math.abs(x + y + z - last_x - last_y - last_z)/ diffTime * 10000;
-
-                    if(speed >SHAKE_THRESHOLD)
-                    {
-
-                    }
-
-
                     last_x = x;
                     last_y = y;
                     last_z = z;
 
                     if(last_x >1){
                         sonido();
+
+
                     }
+
+                    if(last_y >1){
+                        getWindow().getDecorView().setBackgroundColor(Color.BLUE);
+
+                    }else
+                    {
+                        getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+
+                    }
+
+
+
+
 
                     txtx.setText(""+last_x+" m/s2");
                     txty.setText(""+last_y+" m/s2");
@@ -130,9 +143,7 @@ public class MainActivity extends AppCompatActivity implements  SensorEventListe
     private void sonido()
     {
         MediaPlayer mediaPlayer= MediaPlayer.create(this,R.raw.song);
+        mediaPlayer.start();
 
     }
 }
-
-
-
