@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements  SensorEventListe
 
         sensorManager= (SensorManager) getSystemService(SENSOR_SERVICE);
         proximidad=sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
-        lacelerometro=sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        lacelerometro=sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
         sensorManager.registerListener(this, proximidad, SensorManager.SENSOR_DELAY_NORMAL);
         sensorManager.registerListener(this, lacelerometro, SensorManager.SENSOR_DELAY_NORMAL);
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements  SensorEventListe
                 }
                 break;
 
-            case Sensor.TYPE_ACCELEROMETER:
+            case Sensor.TYPE_LINEAR_ACCELERATION:
                 float x = sensorEvent.values[0];
                 float y = sensorEvent.values[1];
                 float z = sensorEvent.values[2];
