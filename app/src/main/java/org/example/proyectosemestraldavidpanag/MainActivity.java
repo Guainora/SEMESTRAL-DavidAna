@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements  SensorEventListe
                     img.setImageResource(R.drawable.acelerometro2);
                 }
                 break;
-// final del case 1
+
             case Sensor.TYPE_ACCELEROMETER:
                 float x = sensorEvent.values[0];
                 float y = sensorEvent.values[1];
@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements  SensorEventListe
 
 
             default:
+            //np tenemos default
                 break;
 
         }
