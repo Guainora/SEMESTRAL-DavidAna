@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements  SensorEventListe
 
 
 
-
     }
 
 
@@ -148,3 +147,4 @@ public class MainActivity extends AppCompatActivity implements  SensorEventListe
 
     }
 }
+// nueva revisión
