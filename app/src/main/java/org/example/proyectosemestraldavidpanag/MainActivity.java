@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements  SensorEventListe
         img= findViewById(R.id.img);
 
 
-
+       //declaracion de los sensores
         sensorManager= (SensorManager) getSystemService(SENSOR_SERVICE);
         proximidad=sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
         lacelerometro=sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
