@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements  SensorEventListener{
-
+// Cambio de control 1
     TextView txtx,txty,txtz;
     Sensor proximidad, lacelerometro;
     ImageView img;
